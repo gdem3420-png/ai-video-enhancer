@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>محسّن الفيديو بالذكاء الاصطناعي</title>
+  <meta name="description" content="حسّن فيديوهاتك مجانًا: رفع الدقة، تصحيح الألوان، إزالة الضوضاء، وزيادة الوضوح — كل ذلك داخل متصفحك.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="logo">🎬 محسّن الفيديو</div>
+    <nav>
+      <a href="#how">كيف يعمل؟</a>
+      <a href="#faq">الأسئلة الشائعة</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>حسّن فيديوهاتك بالذكاء الاصطناعي — مجانًا</h1>
+      <p class="subtitle">
+        رفع الدقة • تصحيح الألوان • إزالة الضوضاء • زيادة الوضوح
+      </p>
+      <p class="privacy">🔒 كل المعالجة تتم داخل متصفحك، ولا يُرفع أي ملف إلى أي سيرفر.</p>
+    </section>
+
+    <section class="uploader">
+      <label class="drop-zone" id="dropZone">
+        <input type="file" id="fileInput" accept="video/*" hidden>
+        <span class="drop-icon">📁</span>
+        <span class="drop-title">اختر فيديو أو اسحبه هنا</span>
+        <small>أي حجم — المعالجة محلية بالكامل</small>
+      </label>
+
+      <div class="options">
+        <div class="option">
+          <label for="scale">مستوى رفع الدقة</label>
+          <select id="scale">
+            <option value="1">بدون تكبير</option>
+            <option value="2" selected>مضاعفة (2×)</option>
+            <option value="3">ثلاثة أضعاف (3×)</option>
+            <option value="4">أربعة أضعاف (4×)</option>
+          </select>
+        </div>
+
+        <label class="switch">
+          <input type="checkbox" id="aiUpscale" checked>
+          <span>رفع الدقة بالذكاء الاصطناعي</span>
+        </label>
+
+        <label class="switch">
+          <input type="checkbox" id="denoise" checked>
+          <span>إزالة الضوضاء والتشويش</span>
+        </label>
+
+        <label class="switch">
+          <input type="checkbox" id="colorFix" checked>
+          <span>تصحيح الألوان والإضاءة</span>
+        </label>
+
+        <label class="switch">
+          <input type="checkbox" id="sharpen" checked>
+          <span>زيادة الوضوح والحدّة</span>
+        </label>
+
+        <label class="switch">
+          <input type="checkbox" id="stabilize">
+          <span>تثبيت الاهتزاز</span>
+        </label>
+      </div>
+
+      <button id="processBtn" disabled>
+        <span id="btnText">🚀 ابدأ التحسين</span>
+      </button>
+
+      <div id="status" class="status">لم يتم اختيار أي فيديو بعد.</div>
+      <progress id="progress" value="0" max="100" hidden></progress>
+
+      <div id="resultBox" class="result" hidden>
+        <h3>✅ تمت المعالجة بنجاح</h3>
+        <video id="output" controls playsinline></video>
+        <a id="downloadLink" class="download">⬇️ تحميل الفيديو المحسّن</a>
+      </div>
+    </section>
+
+    <section id="how" class="info">
+      <h2>كيف يعمل الموقع؟</h2>
+      <ol>
+        <li>تختار الفيديو من جهازك — لا يُرفع إلى أي سيرفر.</li>
+        <li>يعمل الذكاء الاصطناعي داخل متصفحك عبر تقنية WebGPU.</li>
+        <li>تُعالج الإطارات واحدة تلو الأخرى: تكبير، تنقية، تصحيح ألوان، وزيادة حدّة.</li>
+        <li>يُعاد تجميع الفيديو وتحمّله مباشرة من جهازك.</li>
+      </ol>
+    </section>
+
+    <section id="faq" class="info">
+      <h2>الأسئلة الشائعة</h2>
+      <details>
+        <summary>هل الخدمة مجانية حقًا؟</summary>
+        <p>نعم، مجانية بالكامل ولا تحتاج تسجيل دخول. المعالجة تتم على جهازك أنت، لذلك لا نتحمل أي تكلفة سيرفرات.</p>
+      </details>
+      <details>
+        <summary>هل تُرفع فيديوهاتي إلى الإنترنت؟</summary>
+        <p>لا. كل شيء يحدث داخل متصفحك، وفيديوك لا يترك جهازك أبدًا.</p>
+      </details>
+      <details>
+        <summary>لماذا المعالجة قد تكون بطيئة أحيانًا؟</summary>
+        <p>السرعة تعتمد على كرت الشاشة والمعالج في جهازك. كلما كان جهازك أقوى، كانت المعالجة أسرع.</p>
+      </details>
+      <details>
+        <summary>هل يمكن استخدامه على الهاتف؟</summary>
+        <p>نعم، لكن يُفضّل متصفح Chrome أو Edge حديث، مع ذاكرة كافية للفيديوهات الطويلة.</p>
+      </details>
+    </section>
+
+    <footer class="site-footer">
+      <p>صُنع بحب 💙 — مفتوح المصدر ومجاني للجميع.</p>
+    </footer>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
